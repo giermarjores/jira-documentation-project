@@ -1,2 +1,43 @@
 # jira-documentation-project
 Rewritten Jira Software documentation for improved usability
+
+# Jira Software Documentation Project
+
+## Project Overview
+This repository contains rewritten documentation for Atlassian Jira Software, 
+focusing on improved usability, consistency, and accessibility.
+
+## Team Members
+- Kayo Hosonuma (Japan)
+- Hidemi Sakai (Japan)
+- Marjores Gier Umpad (New Zealand)
+- Tun Tun Aung (Thailand)
+
+## Project Goals
+- Audit existing Jira documentation
+- Create 30+ documentation topics (3 concepts, 20 tasks, 5+ references)
+- Implement peer review process
+- Publish rewritten documentation in Wiki
+
+## Repository Structure
+- `/templates` - Documentation templates
+- `/images` - Screenshots and diagrams
+- `/reviews` - Peer review checklists
+- `content-strategy.md` - Content strategy document
+- `style-guide.md` - Writing and formatting guidelines
+
+## Quick Links
+- [Project Board]https://github.com/users/giermarjores/projects/1
+- [Wiki Documentation] (https://github.com/giermarjores/jira-documentation-project/wiki)
+- [Content Strategy]
+
+
+## Documentation Progress
+- [ ] Content Strategy Document
+- [ ] Concept Topics (0/5)
+- [ ] Task Topics (0/20)
+- [ ] Reference Topics (0/5)
+- [ ] Peer Reviews Completed (0/30)
+
+## Last Updated
+23 October 2025
