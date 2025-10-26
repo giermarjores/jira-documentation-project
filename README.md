@@ -27,9 +27,9 @@ focusing on improved usability, consistency, and accessibility.
 - `style-guide.md` - Writing and formatting guidelines
 
 ## Quick Links
-- [Project Board]https://github.com/users/giermarjores/projects/1
-- [Wiki Documentation] (https://github.com/giermarjores/jira-documentation-project/wiki)
-- [Content Strategy]
+- [Project Board] https://github.com/users/giermarjores/projects/1
+- [Wiki Documentation] https://github.com/giermarjores/jira-documentation-project/wiki
+- [Content Strategy] [Detailed Audit of Atlassian Jira Software Documentation](https://github.com/giermarjores/jira-documentation-project/blob/main/Detailed%20Audit%20of%20Atlassian%20Jira%20Software%20Documentation)
 
 
 ## Documentation Progress
