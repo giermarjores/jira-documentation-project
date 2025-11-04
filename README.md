@@ -11,7 +11,6 @@ focusing on improved usability, consistency, and accessibility.
 - Kayo Hosonuma (Japan)
 - Hidemi Sakai (Japan)
 - Marjores Gier Umpad (New Zealand)
-- Tun Tun Aung (Thailand)
 
 ## Project Goals
 - Audit existing Jira documentation
@@ -40,4 +39,4 @@ focusing on improved usability, consistency, and accessibility.
 - [ ] Peer Reviews Completed (0/30)
 
 ## Last Updated
-23 October 2025
+04 November 2025
