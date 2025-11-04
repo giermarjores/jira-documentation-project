@@ -1,0 +1,212 @@
+openapi: 3.0.3
+info:
+  title: Jira Cloud API - Improved Documentation
+  version: 1.0.0
+  description: Improved documentation for 4 common Jira API endpoints - Get issue, Search issues, Add comment, List projects
+  contact:
+    name: Your Team Name
+    email: team@example.com
+servers:
+  - url: https://your-domain.atlassian.net
+    description: Jira Cloud instance
+paths:
+  /rest/api/3/issue/{issueIdOrKey}:
+    get:
+      summary: Get an issue by ID or key
+      description: Retrieve detailed information about a single Jira issue including status, assignee, and priority
+      parameters:
+        - name: issueIdOrKey
+          in: path
+          required: true
+          description: The issue key (like ABC-123) or numeric ID
+          schema:
+            type: string
+          example: ABC-123
+        - name: fields
+          in: query
+          required: false
+          description: Comma-separated list of fields to return (e.g. summary,status,assignee)
+          schema:
+            type: string
+          example: summary,status,assignee
+      responses:
+        '200':
+          description: Successfully retrieved the issue
+          content:
+            application/json:
+              example:
+                key: ABC-123
+                fields:
+                  summary: Login button not working on mobile
+                  status:
+                    name: In Progress
+                  assignee:
+                    displayName: Sarah Johnson
+                  priority:
+                    name: High
+        '401':
+          description: Authentication failed - check your API token
+        '404':
+          description: Issue not found - verify the issue key exists
+          
+  /rest/api/3/search:
+    get:
+      summary: Search for issues using JQL
+      description: Find issues matching your search criteria using Jira Query Language (JQL)
+      parameters:
+        - name: jql
+          in: query
+          required: false
+          description: JQL query string. Example - project = ABC AND status = "To Do"
+          schema:
+            type: string
+          example: project = ABC AND status = "To Do"
+        - name: maxResults
+          in: query
+          required: false
+          description: Maximum number of issues to return (default 50, max 100)
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+          example: 10
+        - name: startAt
+          in: query
+          required: false
+          description: Index of first issue to return (for pagination)
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: Successfully found matching issues
+          content:
+            application/json:
+              example:
+                total: 2
+                maxResults: 50
+                startAt: 0
+                issues:
+                  - key: ABC-123
+                    fields:
+                      summary: Login button not working
+                      status:
+                        name: To Do
+                      assignee:
+                        displayName: Sarah Johnson
+                  - key: ABC-124
+                    fields:
+                      summary: Update footer copyright year
+                      status:
+                        name: To Do
+                      assignee:
+                        displayName: Mike Chen
+        '400':
+          description: Invalid JQL query - check syntax and field names
+        '401':
+          description: Authentication failed
+          
+  /rest/api/3/issue/{issueIdOrKey}/comment:
+    post:
+      summary: Add a comment to an issue
+      description: Post a new comment on an existing Jira issue
+      parameters:
+        - name: issueIdOrKey
+          in: path
+          required: true
+          description: The issue key (like ABC-123) where you want to add the comment
+          schema:
+            type: string
+          example: ABC-123
+      requestBody:
+        required: true
+        description: The comment content
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - body
+              properties:
+                body:
+                  type: string
+                  description: The text of your comment
+            examples:
+              simple:
+                summary: Simple status update
+                value:
+                  body: Started working on this issue. Will update by end of day.
+              detailed:
+                summary: Detailed update
+                value:
+                  body: Fixed the mobile layout issue. Deployed to staging for testing.
+      responses:
+        '201':
+          description: Comment successfully created
+          content:
+            application/json:
+              example:
+                id: "10000"
+                body: Started working on this issue. Will update by end of day.
+                author:
+                  displayName: Mike Chen
+                created: "2024-01-15T14:30:00.000+0000"
+        '400':
+          description: Bad request - missing body field or invalid JSON
+        '401':
+          description: Authentication failed
+        '404':
+          description: Issue not found
+          
+  /rest/api/3/project/search:
+    get:
+      summary: List all accessible projects
+      description: Returns a list of all Jira projects you have permission to view
+      parameters:
+        - name: maxResults
+          in: query
+          required: false
+          description: Maximum number of projects to return (default 50, max 100)
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+          example: 50
+        - name: startAt
+          in: query
+          required: false
+          description: Index of first project to return (for pagination)
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+      responses:
+        '200':
+          description: Successfully retrieved projects
+          content:
+            application/json:
+              example:
+                total: 3
+                maxResults: 50
+                startAt: 0
+                values:
+                  - key: ABC
+                    name: Website Redesign
+                    projectTypeKey: software
+                    lead:
+                      displayName: Sarah Johnson
+                  - key: MKT
+                    name: Marketing Campaigns
+                    projectTypeKey: business
+                    lead:
+                      displayName: Mike Chen
+                  - key: SUP
+                    name: Customer Support
+                    projectTypeKey: service_desk
+                    lead:
+                      displayName: Lisa Wong
+        '401':
+          description: Authentication failed
