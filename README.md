@@ -32,11 +32,11 @@ focusing on improved usability, consistency, and accessibility.
 
 
 ## Documentation Progress
-- [ ] Content Strategy Document
-- [ ] Concept Topics (0/5)
-- [ ] Task Topics (0/20)
-- [ ] Reference Topics (0/5)
-- [ ] Peer Reviews Completed (0/30)
+- [/] Content Strategy Document
+- [/] Concept Topics
+- [/] Task Topics 
+- [/] Reference Topics
+- [/] Peer Reviews Completed
 
 ## Last Updated
 04 November 2025
